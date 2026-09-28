@@ -7,11 +7,15 @@ from nonebot.adapters.onebot.v11 import NoticeEvent
 from nonebot.rule import Rule
 
 from . import plugin
-from .event_filter import event_values, is_private_input_status, private_chat_key
+from .event_filter import event_values, is_onebot_private_input_status, private_chat_key
+
+
+def _is_onebot_private_input_status(event: object) -> bool:
+    return is_onebot_private_input_status(event, NoticeEvent)
 
 
 input_status_matcher = on_notice(
-    rule=Rule(is_private_input_status),
+    rule=Rule(_is_onebot_private_input_status),
     priority=99998,
     block=True,
 )

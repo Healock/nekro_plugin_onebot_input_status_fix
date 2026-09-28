@@ -26,5 +26,9 @@ def is_private_input_status(event: Any) -> bool:
     )
 
 
+def is_onebot_private_input_status(event: Any, notice_event_type: type) -> bool:
+    return isinstance(event, notice_event_type) and is_private_input_status(event)
+
+
 def private_chat_key(user_id: Any) -> str:
     return f"onebot_v11-private_{user_id}"
