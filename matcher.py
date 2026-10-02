@@ -10,7 +10,7 @@ from . import plugin
 from .event_filter import event_values, is_onebot_private_input_status, private_chat_key
 
 
-def _is_onebot_private_input_status(event: object) -> bool:
+def _is_onebot_private_input_status(event: NoticeEvent) -> bool:
     return is_onebot_private_input_status(event, NoticeEvent)
 
 
